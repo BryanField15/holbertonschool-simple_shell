@@ -7,7 +7,7 @@
 #include<sys/wait.h>
 /**
  * _execve - execute a program
- * @user_input: parameter of user input 
+ * @user_input: parameter of user input
  * Return: 0 on success
  */
 int _execve(char *user_input)
@@ -17,19 +17,20 @@ int _execve(char *user_input)
 	argv[0] = user_input;
 	argv[1] = NULL;
 
-    if (execve(argv[0], argv, NULL) == -1)
-    {
-	perror("./shell");
-	return (-1);
-    }
-    return (0);
+	if (execve(argv[0], argv, NULL) == -1)
+	{
+		perror("./shell");
+		return (-1);
+	}
+	return (0);
 }
+
 /**
  * read_line - read user input line
- *
  * Return: pointer to the input line
  */
-char *read_line ()
+
+char *read_line()
 {
 	size_t length;
 	char *line;
@@ -43,7 +44,7 @@ char *read_line ()
 		exit(0);
 	}
 	else if (is_read == -1)
-	{	
+	{
 		return (NULL);
 	}
 	return (line);
@@ -51,10 +52,9 @@ char *read_line ()
 
 /**
  * main - prints prompt, waits for a users command to execute
- *
  * Return: 0
  */
-int main ()
+int main(void)
 {
 	char *input;
 	pid_t child;
@@ -69,7 +69,10 @@ int main ()
 			printf("%d\n", errno);
 			continue;
 		}
-		input = strtok(input, "\n");
+		if (input[strlen(input) - 1] == '\n')
+		{
+			input[strlen(input) - 1] = '\0';
+		}
 
 		child = fork();
 		if (child == -1)
