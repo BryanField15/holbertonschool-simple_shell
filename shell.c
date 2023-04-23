@@ -19,7 +19,7 @@ int _execve(char *user_input)
 
     if (execve(argv[0], argv, NULL) == -1)
     {
-        perror("./argv[0]");
+	perror("./shell");
 	return (-1);
     }
     return (0);
