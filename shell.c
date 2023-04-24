@@ -62,18 +62,19 @@ int main(void)
 
 	while (1)
 	{
-		printf("#cisfun$ ");
+		if (isatty(STDIN_FILENO) == 1)
+		{
+			printf("#cisfun$ ");
+		}
 		input = read_line(stdin);
 		if (input == NULL)
 		{
-			printf("%d\n", errno);
-			continue;
+			break;
 		}
 		if (input[strlen(input) - 1] == '\n')
 		{
 			input[strlen(input) - 1] = '\0';
 		}
-
 		child = fork();
 		if (child == -1)
 		{
