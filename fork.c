@@ -14,14 +14,12 @@ int run_command(char *input)
 	child = fork();
 	if (child == -1)
 	{
-		free(input);
 		return (1);
 	}
 	else if (child == 0)
 	{
 		if (_execve(input) == -1)
 		{
-			free(input);
 			return (1);
 		}
 		return (0);

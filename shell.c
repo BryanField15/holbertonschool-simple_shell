@@ -23,11 +23,7 @@ int main(void)
 		{
 			input[strlen(input) - 1] = '\0';
 		}
-
-		if (run_command(input) != 0)
-		{
-			printf("Error running command\n");
-		}
+		run_command(input);
 		free(input);
 	}
 	return (0);
