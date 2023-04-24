@@ -10,10 +10,10 @@ int main(void)
 	char *input;
 	pid_t child;
 	int status;
-	init_shell();
 
 	while (1)
 	{
+		init_shell();
 		input = read_line(stdin);
 		if (input == NULL)
 		{
