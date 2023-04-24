@@ -8,8 +8,6 @@
 int main(void)
 {
 	char *input;
-	pid_t child;
-	int status;
 
 	while (1)
 	{
@@ -20,28 +18,15 @@ int main(void)
 			free(input);
 			break;
 		}
-		input = strtok(input, " \t\n");
-		child = fork();
-		if (child == -1)
+
+		if (input[strlen(input) - 1] == '\n')
 		{
-			free(input);
-			return (1);
+			input[strlen(input) - 1] = '\0';
 		}
-		if (child == 0)
+
+		if (run_command(input) != 0)
 		{
-			if (_execve(input) == -1)
-			{
-				free(input);
-				return (1);
-			}
-			return (0);
-		}
-		else
-		{
-			if (wait(&status) == -1)
-			{
-				perror("wait");
-			}
+			printf("Error running command\n");
 		}
 		free(input);
 	}
