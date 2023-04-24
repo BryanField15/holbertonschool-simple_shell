@@ -20,10 +20,7 @@ int main(void)
 			free(input);
 			break;
 		}
-		if (input[strlen(input) - 1] == '\n')
-		{
-			input[strlen(input) - 1] = '\0';
-		}
+		input = strtok(input, "\n");
 		child = fork();
 		if (child == -1)
 		{
