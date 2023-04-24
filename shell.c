@@ -17,6 +17,7 @@ int main(void)
 		input = read_line(stdin);
 		if (input == NULL)
 		{
+			free(input);
 			break;
 		}
 		if (input[strlen(input) - 1] == '\n')
