@@ -9,6 +9,7 @@ int main(void)
 {
 	char *input;
 	char *trimmed;
+	char **token_array;
 
 	while (1)
 	{
@@ -25,7 +26,10 @@ int main(void)
 		}
 		*/
 		trimmed = trim_line(input);
-		run_command(trimmed);
+		token_array = make_token(trimmed, " ");
+		run_command(token_array);
+		free(trimmed);
+		free(token_array);
 		free(input);
 	}
 	return (0);

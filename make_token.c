@@ -1,4 +1,4 @@
-#include "main.h
+#include "main.h"
 
 /**
 * make_token - takes the trimed line and returns an array of tokens
@@ -28,11 +28,13 @@ char **make_token(char *trimmed, char *delim)
 		i = i + 1;
 	}
 
-	free(token_str);
+	/*free(token_str);
+	 */
 	token_array = malloc(sizeof(*token_array) * (i + 1));
 	if (token_array == NULL)
 	{
-		free(token_str);
+		/*free(token_str);
+		 */
 		return (NULL);
 	}
 	i = 0;

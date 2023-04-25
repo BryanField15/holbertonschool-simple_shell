@@ -20,7 +20,8 @@ char *trim_line(char *line)
 	}
 
 	result = strdup(trimmed_line);
-	free(line);
+	/*free(line);
+	 */
 
 	return (result);
 }

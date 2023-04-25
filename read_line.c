@@ -16,7 +16,8 @@ char *read_line()
 	is_read = getline(&line, &length, stdin);
 	if (is_read == EOF)
 	{
-		free(line);
+		/*free(line);
+		 */
 		return (NULL);
 	}
 	return (line);
