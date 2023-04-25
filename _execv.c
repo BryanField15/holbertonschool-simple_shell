@@ -1,27 +1,16 @@
 #include "main.h"
 
 /**
- * _execve - execute a program
- * @user_input: parameter of user input
- * Return: 0 on success
+ * _execve - execute a user command
+ * @token_array: tokenised array from user input
+ * Return: 0 on success, -1 on failure
  */
-int _execve(char *user_input)
+
+int _execve(char **token_array)
 {
-	char *argv[2];
+	extern char **environ;
 
-	char *input_copy;
-
-	input_copy = strdup(user_input);
-	if (input_copy == NULL)
-	{
-		perror("strdup");
-		return (-1);
-	}
-
-	argv[0] = user_input;
-	argv[1] = NULL;
-
-	if (execve(argv[0], argv, NULL) == -1)
+	if (execve(token_array[0], token_array, environ) == -1)
 	{
 		perror("./shell");
 		return (-1);
