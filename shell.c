@@ -8,7 +8,7 @@
 int main(void)
 {
 	char *input;
-	char *trim;
+	char *trimmed;
 
 	while (1)
 	{
@@ -25,7 +25,7 @@ int main(void)
 			input[strlen(input) - 1] = '\0';
 		}
 
-		trim = trim_line(input);
+		trimmed = trim_line(input);
 		run_command(input);
 		free(input);
 	}
