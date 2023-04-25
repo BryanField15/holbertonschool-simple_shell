@@ -8,7 +8,7 @@
 char *read_line()
 {
 	size_t length;
-	char *line, *token, *trimmed_line, *result;
+	char *line, *trimmed_line, *result;
 	int is_read;
 
 	line = NULL;
@@ -23,8 +23,18 @@ char *read_line()
 		free(line);
 		return (NULL);
 	}
+	while (isspace(*line))
+	{
+		line = line + 1;
+	}
 
-	token = strtok(line, " \t\n");
+	trimmed_line = line + strlen(line) - 1;
+	while (trimmed_line > line && isspace(*trimmed_line))
+	{
+		*trimmed_line-- = '\0';
+	}
+	
+	/* token = strtok(line, " \t\n");
 	if (token != NULL)
 	{
 		trimmed_line = token;
@@ -36,8 +46,8 @@ char *read_line()
 	{
 		trimmed_line = line;
 	}
-
-	result = strdup(trimmed_line);
+	*/
+	result = strdup(line);
 	free(line);
 
 	return (result);

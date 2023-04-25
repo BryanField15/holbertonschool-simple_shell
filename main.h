@@ -8,6 +8,7 @@
 #include <unistd.h>
 #include<sys/types.h>
 #include<sys/wait.h>
+#include <ctype.h>
 
 char *read_line();
 void init_shell(void);
