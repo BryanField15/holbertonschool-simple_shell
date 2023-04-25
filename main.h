@@ -12,6 +12,6 @@
 char *read_line();
 void init_shell(void);
 int _execve(char *user_input);
-int run_command(char* input);
+int run_command(char *input);
 
 #endif /* _MAIN_H_ */

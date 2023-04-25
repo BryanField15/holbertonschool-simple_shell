@@ -5,11 +5,10 @@
  *Return: void
  */
 
-void init_shell()
+void init_shell(void)
 {
 	if (isatty(STDIN_FILENO) == 1)
 	{
 		printf("#cisfun$ ");
 	}
-	return;
 }
