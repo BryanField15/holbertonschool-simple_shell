@@ -10,18 +10,24 @@ char *read_line()
 	size_t length;
 	char *line, *trimmed_line, *token, *result;
 	int is_read;
+	int space_check;
 
 	line = NULL;
 	length = 0;
 	is_read = getline(&line, &length, stdin);
-	if (is_read == -1 && errno == 0)
+	if (is_read == -1)
 	{
-		exit(0);
-	}
-	else if (is_read == -1)
-	{
+		if (errno == 0)
+		{
+			exit(0);
+		}
 		free(line);
 		return (NULL);
+	}
+	space_check = is_space(line);
+	if (space_check == 0)
+	{
+		exit(0);
 	}
 	/*
 	while (isspace(*line))
