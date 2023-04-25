@@ -9,26 +9,15 @@ char *read_line()
 {
 	size_t length;
 	char *line;
-	int is_read;
-	int space_check;
+	ssize_t is_read;
 
 	line = NULL;
 	length = 0;
 	is_read = getline(&line, &length, stdin);
-	if (is_read == -1)
+	if (is_read == EOF)
 	{
-		if (errno == 0)
-		{
-			exit(0);
-		}
 		free(line);
 		return (NULL);
 	}
-	space_check = is_space(line);
-	if (space_check == 0)
-	{
-		exit(0);
-	}
-
 	return (line);
 }
