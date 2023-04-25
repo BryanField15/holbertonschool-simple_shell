@@ -26,7 +26,7 @@ int main(void)
 		}
 
 		trimmed = trim_line(input);
-		run_command(input);
+		run_command(trimmed);
 		free(input);
 	}
 	return (0);
