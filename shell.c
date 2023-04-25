@@ -13,18 +13,17 @@ int main(void)
 	while (1)
 	{
 		init_shell();
-		input = read_line(stdin);
+		input = read_line();
 		if (input == NULL)
 		{
-			free(input);
 			break;
 		}
 
-		if (input[strlen(input) - 1] == '\n')
+		/*if (input[strlen(input) - 1] == '\n')
 		{
 			input[strlen(input) - 1] = '\0';
 		}
-
+		*/
 		trimmed = trim_line(input);
 		run_command(trimmed);
 		free(input);
