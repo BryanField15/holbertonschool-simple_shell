@@ -36,7 +36,7 @@ char **make_token(char *trimmed, char *delim)
 		return (NULL);
 	}
 	i = 0;
-	token = strtok(trimmed, delim);
+	token = strtok(token_str, delim);
 	while (token != NULL)
 	{
 		token_array[i] = token;
