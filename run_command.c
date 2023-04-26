@@ -6,7 +6,7 @@
  *Return: 0
  */
 
-int run_command(char *input)
+int run_command(char **token_array)
 {
 	pid_t child;
 	int status;
@@ -18,7 +18,7 @@ int run_command(char *input)
 	}
 	else if (child == 0)
 	{
-		if (_execve(input) == -1)
+		if (_execve(token_array) == -1)
 		{
 			return (1);
 		}
