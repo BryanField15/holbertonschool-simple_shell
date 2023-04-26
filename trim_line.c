@@ -11,7 +11,7 @@ char *trim_line(char *line)
 
 	if (*line == '\0')
 	{
-		printf("error from only hitting enter\n");
+/*		printf("error from only hitting enter\n");*/
 		return (line);
 	}
 
@@ -21,6 +21,6 @@ char *trim_line(char *line)
 		end = end - 1;
 	}
 	end[1] = '\0';
-	printf("the trimmed line is: %s\n", line);
+/*	printf("the trimmed line is: %s\n", line);*/
 	return (line);
 }

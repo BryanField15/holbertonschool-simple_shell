@@ -18,7 +18,7 @@ int run_command(char **token_array)
 	}
 	else if (child == 0)
 	{
-		printf("the token array will be executed is: %s\n", *token_array);
+/*		printf("the token array will be executed is: %s\n", *token_array);*/
 		if (_execve(token_array) == -1)
 		{
 			return (1);
