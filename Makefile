@@ -3,7 +3,7 @@ RM = rm -f
 BETTY = betty
 CFLAGS = -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format
 
-SRC0 =   shell.c make_token.c read_line.c run_command.c prompt.c trim_line.c _execv.c
+SRC0 =   shell.c get_path.c make_token.c read_line.c run_command.c prompt.c trim_line.c _execv.c
 OBJ0 =   $(SRC0:.c=.o)
 NAME0 =  hsh
 

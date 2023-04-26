@@ -6,8 +6,9 @@
 #include <errno.h>
 #include <string.h>
 #include <unistd.h>
-#include<sys/types.h>
-#include<sys/wait.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <sys/stat.h>
 #include <ctype.h>
 
 char *read_line();
@@ -16,4 +17,6 @@ int _execve(char **token_array);
 int run_command(char **token_array);
 char* trim_line(char* line);
 char **make_token(char *trimmed, char *delim);
+char *get_path(char *command);
+
 #endif /* _MAIN_H_ */
