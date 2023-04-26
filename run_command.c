@@ -14,18 +14,16 @@ int run_command(char **token_array)
 	child = fork();
 	if (child == -1)
 	{
+		free(token_array);
 		return (1);
 	}
 	else if (child == 0)
 	{
-/*		printf("the token array will be executed is: %s\n", *token_array);*/
 		if (_execve(token_array) == -1)
 		{
 			return (1);
 		}
 		return (0);
-		/*exit(0);
-		*/
 	}
 	else
 	{

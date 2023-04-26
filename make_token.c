@@ -16,26 +16,22 @@ char **make_token(char *trimmed, char *delim)
 
 	i = 0;
 	token_str = strdup(trimmed);
-/*	printf("trimmed string duplicated: %s\n", token_str);*/
+
 	if (token_str == NULL)
 	{
-/*		printf("the string passed to make_token is NULL\n");*/
 		return (NULL);
 	}
 
 	token = strtok(token_str, delim);
-/*	printf("first token is: %s\n", token);*/
 	while (token != NULL)
 	{
-		token = strtok(NULL, delim);
 		i = i + 1;
+		token = strtok(NULL, delim);
 	}
-/*	free(token_str);*/
 
 	token_array = malloc(sizeof(*token_array) * (i + 1));
 	if (token_array == NULL)
 	{
-/*		printf("token_array is null");*/
 		free(token_str);
 		return (NULL);
 	}

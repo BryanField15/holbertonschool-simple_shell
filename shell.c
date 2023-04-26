@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * main - prints prompt, waits for a users command to execute
+ * main - a simple UNIX command interpreter
  * Return: 0
  */
 
