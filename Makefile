@@ -14,13 +14,13 @@ test:
 	$(CC) $(SRC0) -o $(NAME0)
 
 clean:
-	$(RM) *~ $(NAME)
+	$(RM) *~ $(NAME0)
 
 oclean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJ0)
 
 fclean:
-	$(RM) *~ $(NAME)
-	$(RM) $(OBJ)
+	$(RM) *~ $(NAME0)
+	$(RM) $(OBJ0)
 
 re: oclean all
