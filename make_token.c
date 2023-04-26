@@ -9,13 +9,12 @@
 
 char **make_token(char *trimmed, char *delim)
 {
-	int i, j;
+	int i;
 	char *token_str;
 	char *token;
 	char **token_array;
 
 	i = 0;
-	j = 0;
 	token_str = strdup(trimmed);
 /*	printf("trimmed string duplicated: %s\n", token_str);*/
 	if (token_str == NULL)
@@ -28,9 +27,10 @@ char **make_token(char *trimmed, char *delim)
 /*	printf("first token is: %s\n", token);*/
 	while (token != NULL)
 	{
-		i = i + 1;
 		token = strtok(NULL, delim);
+		i = i + 1;
 	}
+/*	free(token_str);*/
 
 	token_array = malloc(sizeof(*token_array) * (i + 1));
 	if (token_array == NULL)
@@ -43,18 +43,11 @@ char **make_token(char *trimmed, char *delim)
 	token = strtok(trimmed, delim);
 	while (token != NULL)
 	{
-		token_array[i] = strdup(token);
-		i = i + 1;
+		token_array[i] = token;
 		token = strtok(NULL, delim);
+		i = i + 1;
 	}
 	token_array[i] = NULL;
-	while (token_array[j] != NULL)
-	{
-/*		printf("token array is :%s\n", token_array[j]);*/
-		j = j + 1;
-	}
-	/*printf("free token str");
 	free(token_str);
-	 */
 	return (token_array);
 }

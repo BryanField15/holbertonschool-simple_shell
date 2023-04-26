@@ -23,7 +23,9 @@ int run_command(char **token_array)
 		{
 			return (1);
 		}
-		return (0);
+		/*return (0);
+		 */
+		exit(0);
 	}
 	else
 	{
