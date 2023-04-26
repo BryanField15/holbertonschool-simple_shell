@@ -28,9 +28,9 @@ int main(void)
 		trimmed = trim_line(input);
 		token_array = make_token(trimmed, " ");
 		run_command(token_array);
-		/*free(token_array);
+		free(token_array);
 		free(trimmed);
-		*/
+		
 		if (input != NULL)
 		{
 			free(input);
