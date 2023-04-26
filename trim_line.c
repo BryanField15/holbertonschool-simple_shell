@@ -2,26 +2,25 @@
 
 char *trim_line(char *line)
 {
-	char *token;
-	char *trimmed_line;
-	char *result;
+	char *end;
 
-	token = strtok(line, " \t\n");
-	if (token != NULL)
+	while (isspace(*line) != 0)
 	{
-		trimmed_line = token;
-		while ((token = strtok(NULL, " \t\n")) != NULL)
-		{
-			trimmed_line = token;
-		}
-	} else
-	{
-		trimmed_line = line;
+		line = line + 1;
 	}
 
-	result = strdup(trimmed_line);
-	/*free(line);
-	 */
+	if (*line == '\0')
+	{
+		printf("error from only hitting enter\n");
+		return (line);
+	}
 
-	return (result);
+	end = line + strlen(line) - 1;
+	while (end > line && (isspace(*end) != 0))
+	{
+		end = end - 1;
+	}
+	end[1] = '\0';
+	printf("the trimmed line is: %s\n", line);
+	return (line);
 }

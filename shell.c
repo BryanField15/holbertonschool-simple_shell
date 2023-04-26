@@ -17,7 +17,7 @@ int main(void)
 		input = read_line();
 		if (input == NULL)
 		{
-			break;
+			return (0);
 		}
 
 		/*if (input[strlen(input) - 1] == '\n')
@@ -28,9 +28,13 @@ int main(void)
 		trimmed = trim_line(input);
 		token_array = make_token(trimmed, " ");
 		run_command(token_array);
+		/*free(token_array);
 		free(trimmed);
-		free(token_array);
-		free(input);
+		*/
+		if (input != NULL)
+		{
+			free(input);
+		}
 	}
 	return (0);
 }
