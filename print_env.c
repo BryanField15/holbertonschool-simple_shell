@@ -5,7 +5,7 @@
  *Return: 0
  */
 
-int print_env(__attribute__((unused)) char **token_array)
+int print_env(__attribute__((unused)) char **environ)
 {
 	int i;
 
