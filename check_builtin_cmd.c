@@ -1,6 +1,6 @@
 # include "main.h"
 /**
- * check_builtin_cmd - find matching builtin and execute 
+ * check_builtin_cmd - find matching builtin and execute
  *
  * Return: 0 on success and 1 if no matching builtin found
  */
@@ -31,5 +31,3 @@ int check_builtin_cmd(char **token_array)
 	}
 	return (1);
 }
-
-
