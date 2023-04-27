@@ -1,9 +1,8 @@
 CC = gcc
 RM = rm -f
-BETTY = betty
-CFLAGS = -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format
+CFLAGS = -Wall -Werror -Wextra -pedantic -std=gnu89
 
-SRC0 =   shell.c get_path.c make_token.c read_line.c run_command.c prompt.c trim_line.c _execv.c
+SRC0 = *.c
 OBJ0 =   $(SRC0:.c=.o)
 NAME0 =  hsh
 
@@ -14,13 +13,11 @@ test:
 	$(CC) $(SRC0) -o $(NAME0)
 
 clean:
-	$(RM) *~ $(NAME0)
+	$(RM) *~ \#*\# \.\#* $(NAME0) $(OBJ)
 
-oclean:
-	$(RM) $(OBJ0)
+re: clean all
 
-fclean:
-	$(RM) *~ $(NAME0)
-	$(RM) $(OBJ0)
+lint:
+	betty $(SRC)
 
-re: oclean all
+.PHONY: all test clean re lint
