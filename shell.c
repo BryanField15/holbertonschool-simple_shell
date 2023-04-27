@@ -21,7 +21,10 @@ int main(void)
 		}
 		trimmed = trim_line(input);
 		token_array = make_token(trimmed, " ");
-		run_command(token_array);
+		if (check_builtin_cmd(token_array) == 1)
+		{
+			run_command(token_array);
+		}
 		free(token_array);
 		free(input);
 	}
