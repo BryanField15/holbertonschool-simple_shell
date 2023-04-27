@@ -27,6 +27,7 @@ int main(void)
 		}
 		free(token_array);
 		free(input);
+		fflush(stdin);
 	}
 	return (0);
 }

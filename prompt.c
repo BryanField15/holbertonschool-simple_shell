@@ -11,4 +11,5 @@ void init_shell(void)
 	{
 		printf("#cisfun$ ");
 	}
+	fflush(stdin);
 }

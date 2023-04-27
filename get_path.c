@@ -14,7 +14,7 @@ char *_getenv(const char *name)
         i = 0;
         while (environ[i] != NULL)
         {
-                str = strtok(environ[i], "=");
+		str = strtok(strdup(environ[i]), "=");
                 if (strcmp(str,  name) == 0)
                 {
                         str = strtok(NULL, "=");
@@ -31,19 +31,26 @@ char *_getenv(const char *name)
  * Return: pointer to the list
  */
 
-list_t * _path_to_list()
+list_t * _path_to_list(char *command)
 {
 	char *str;
 	list_t *node;
 	char *dir;
+	char *full_path;
 
 	str = _getenv("PATH");
 	dir = strtok(str, ":");
 	node = NULL;
 	while (dir != NULL)
 	{
-		node = add_node_end(&node, dir);
+		full_path = malloc(sizeof(*full_path) * (strlen(command) + strlen(dir) + 2));
+		full_path[0] = '\0';
+		strcat(full_path, dir);
+		strcat(full_path, "/");
+		strcat(full_path, command);
+		add_node_end(&node, full_path);
 		dir = strtok(NULL, ":");
+		free(full_path);
 	}
 	return (node);
 }
@@ -66,6 +73,102 @@ void free_list(list_t *head)
 }
 
 /**
+ * add_node - a function that adds a new node at the beginning
+ * of a list_t list
+ * @head: input parameter of a pointer to the beginning of a linked list
+ * @str: input string that too be added at the beginning
+ * Return: the address of the new element or NULL if it faild
+ */
+list_t *add_node(list_t **head, const char *str)
+{
+	list_t *ptr = malloc(sizeof(list_t));
+	unsigned int i;
+
+	if (ptr == NULL)
+	{
+		return (NULL);
+	}
+	i = 0;
+	while (str[i] != '\0')
+	{
+		i = i + 1;
+	}
+	ptr->str = strdup(str);
+	ptr->len = i;
+	ptr->next = NULL;
+
+	ptr->next = *head;
+	*head = ptr;
+	return (*head);
+}
+
+/**
+ * add_node_end - a function that adds a new node at the end
+ * of a list_t list
+ * @head: input parameter of a pointer to the beginning of a linked list
+ * @str: input string that too be added at the end
+ * Return: the address of the new element or NULL if it faild
+ */
+list_t *add_node_end(list_t **head, const char *str)
+{
+    list_t *temp = malloc(sizeof(list_t));
+    list_t *ptr;
+    unsigned int i;
+
+    if (temp == NULL)
+    {
+        return (NULL);
+    }
+    i = 0;
+    while (str[i] != '\0')
+    {
+        i = i + 1;
+    }
+    temp->str = strdup(str);
+    temp->len = i;
+    temp->next = NULL;
+    if (*head == NULL)
+    {
+        *head = temp;
+    }
+    else
+    {
+        ptr = *head;
+        while (ptr->next != NULL)
+        {
+            ptr = ptr->next;
+        }
+        ptr->next = temp;
+    }
+    return (temp);
+}
+
+/**
+ * print_list - a function that prints all the elements of a list_t list
+ * @h: input parameter of a pointer to a list
+ * Return: the number of nodes in the list
+ */
+size_t print_list(const list_t *h)
+{
+	size_t count;
+
+	count = 0;
+	while (h != NULL)
+	{
+		if (h->str == NULL)
+		{
+			printf("[0] (nil)\n");
+		}
+		else
+		{
+			printf("[%ld] %s\n", count, h->str);
+		}
+		h = h->next;
+		count = count + 1;
+	}
+	return (count);
+}
+/**
  *get_path - handles the path variable and only forks if it is found
  *@command:
  *
@@ -74,5 +177,25 @@ void free_list(list_t *head)
 
 char *get_path(char *command)
 {
-	
+	list_t *head;
+	list_t *tmp;
+	char *path;
+	struct stat st;
+
+	head = _path_to_list(command);
+	add_node(&head, command);
+	print_list(head);
+	tmp = head;
+	while (tmp != NULL)
+	{
+		if (stat(tmp->str, &st) == 0 && ((st.st_mode & S_IXUSR) == S_IXUSR))
+		{
+			path = strdup(tmp->str);
+			free_list(head);
+			return (path);	
+		}
+		tmp = tmp->next;
+	}
+	free_list(head);
+	return (NULL);
 }
