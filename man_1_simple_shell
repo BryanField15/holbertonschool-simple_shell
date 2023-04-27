@@ -1,0 +1,59 @@
+SIMPLE_SHELL		Holberton Programmer's Manual		SIMPLE_SHELL
+
+NAME
+	simple_shell - a simple unix shell
+
+SYNOPSIS
+
+	hsh
+
+DESCRIPTION
+
+	simple_shell is a simple UNIX shell that executes commands read from the standard input or from a file. It can handle only a small selction of commands and operations. The output mirrors that of sh and has the same error output. The shell can be run in both interactive and non-interactive modes. This shell was created as a project for Holberton School. 
+
+COMMANDS
+	The following commands are supported by simple_shell
+
+	cd [directory]
+    	* Changes the current working directory to the specified directory.
+
+	env
+    	* Prints the current environment variables.
+
+	exit [status]
+    	* Exits the shell with the specified status (default is 0).
+
+EXIT STATUS
+	The following may be returned
+	0 - Success
+	1 - Failure
+
+OPTIONS
+	The hsh command does not take any command line options
+
+EXAMPLES
+	Interactive mode
+	$ ./hsh
+	  ($) /bin/ls
+	  hsh main.c shell.c
+	  ($)
+	  ($) exit
+	$
+
+	Non-interactive mode
+	$ echo "/bin/ls" | ./hsh
+	hsh main.c shell.c test_ls_2
+	$
+
+SEE ALSO
+	bash(1), sh(1)
+
+AUTHORS
+	Bryan Field and Yu Ji
+
+REPORTING BUGS
+	Please report bugs to the Github repository:
+	https://github.com/BryanField15/holbertonschool-simple_shell
+
+COPYRIGHT
+	This shell was created for educational purposes only.
