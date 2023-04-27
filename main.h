@@ -11,17 +11,6 @@
 #include <sys/stat.h>
 #include <ctype.h>
 
-char *read_line();
-void init_shell(void);
-int _execve(char **token_array);
-int run_command(char **token_array);
-char* trim_line(char* line);
-char **make_token(char *trimmed, char *delim);
-char *get_path(char *command);
-int print_env(__attribute__((unused))char **token_array);
-int leave_shell(__attribute__((unused))char **token_array);
-int check_builtin_cmd(char **token_array);
-extern char **environ;
 /**
  * struct builtin_func - structure of built-in functions
  * @name: name
@@ -29,10 +18,26 @@ extern char **environ;
  */
 typedef struct builtin_func
 {
-	char *name;
-	int (*f)(char **token_array);
+        char *name;
+        int (*f)(char **token_array);
 } func_t;
 
+extern char **environ;
+
+void init_shell(void);
+char *read_line();
+char *trim_line(char *line);
+char **make_token(char *trimmed, char *delim);
+
+int _execve(char **token_array);
+int run_command(char **token_array);
+
+char *get_path(char *command);
+
+/* built_in */
+int check_builtin_cmd(char **token_array);
 int print_env(char **token_array);
 int leave_shell(char **token_array);
-#endif /* _MAIN_H_ */
+
+
+#endif

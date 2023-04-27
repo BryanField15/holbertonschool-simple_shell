@@ -1,4 +1,9 @@
 #include "main.h"
+/**
+ * trim_line - get rid off the leading and trailing spaces
+ * @line: pointer to line to be trimmed
+ * Return: pointer to the trimmed line
+ */
 
 char *trim_line(char *line)
 {
