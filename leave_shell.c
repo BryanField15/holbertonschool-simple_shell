@@ -7,9 +7,9 @@
  *
  */
 
-int leave_shell(__attribute__((unused))char **token_array)
+int leave_shell(__attribute__((unused))char **token_array, 
+		__attribute__((unused))char **env)
 {
-	printf("leaving shell\n");
-	exit(2);
+	exit(0);
 	return (0);
 }
