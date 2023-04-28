@@ -44,13 +44,15 @@ char *read_line();
 char *trim_line(char *line);
 char **make_token(char *trimmed, char *delim);
 
-list_t *add_node_end(list_t **head, const char *str);
+/* make linked list for path */
 list_t *add_node(list_t **head, const char *str);
-
-int run_command(char **token_array);
+void free_list(list_t *head);
+list_t *_path_to_list(char *command);
 
 char *get_path(char *command);
 
+int run_command(char **token_array);
+/*built-ins*/
 int check_builtin_cmd(char **token_array);
 int print_env(char **token_array);
 int leave_shell(char **token_array);
