@@ -8,7 +8,7 @@
 
 char *_getenv(const char *name)
 {
-	const char **environ_ptr;
+	char **environ_ptr;
 	char *str;
 	int i;
 
