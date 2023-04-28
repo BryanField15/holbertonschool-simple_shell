@@ -1,12 +1,10 @@
 #include "main.h"
 
 /**
- *run_command - executes a command in a child process
- *@input: user input from command line
- *Return: 0
+ * run_command - executes a command in a child process
+ * @input: user input from command line
+ * Return: 0
  */
-
-extern char **environ;
 
 int run_command(char **token_array)
 {
@@ -30,8 +28,6 @@ int run_command(char **token_array)
 	child = fork();
 	if (child == -1)
 	{
-	/*	perror("fork");
-	 */
 		free(path);
 		free(token_array);
 		return (1);
@@ -45,10 +41,6 @@ int run_command(char **token_array)
 			free(path);
 			exit(EXIT_FAILURE);
 		}
-		/*if (_execve() == -1)
-		{
-			return (1);
-		}*/
 		return (0);
 	}
 	else

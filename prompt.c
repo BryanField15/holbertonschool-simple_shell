@@ -7,6 +7,7 @@
 
 void init_shell(void)
 {
+	signal(SIGINT, SIG_IGN);
 	if (isatty(STDIN_FILENO) == 1)
 	{
 		printf("#cisfun$ ");
