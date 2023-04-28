@@ -36,7 +36,6 @@ int change_wd(char **token_array)
 	}
 
 	path = token_array[1];
-	printf("we are in the builtin cd and get path\n");
 	result = chdir(path);
 	if (result != 0)
 	{
