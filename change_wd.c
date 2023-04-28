@@ -32,10 +32,10 @@ int change_wd(char **token_array)
 
 	array_size = count_array_size(token_array);
 	if (array_size > 2)
-        {
-                perror("cd");
-                return (1);
-        }
+	{
+		perror("cd");
+		return (1);
+	}
 	if (array_size == 1)
 	{
 		chdir(getenv("HOME"));

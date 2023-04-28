@@ -49,11 +49,9 @@ int run_command(char **token_array)
 		{
 			perror("wait");
 			/*free(path);
-			return (1);
-			*/
+			return (1);*/
 		}
 	}
-	/*free(token_array);
-	 */
+	/*free(token_array);*/
 	return (0);
 }

@@ -8,22 +8,22 @@
 
 char *_getenv(const char *name)
 {
-        extern char **environ;
-        char *str;
-        int i;
+	extern char **environ;
+	char *str;
+	int i;
 
-        i = 0;
-        while (environ[i] != NULL)
-        {
+	i = 0;
+	while (environ[i] != NULL)
+	{
 		str = strtok(strdup(environ[i]), "=");
-                if (strcmp(str,  name) == 0)
-                {
-                        str = strtok(NULL, "=");
-                        return (str);
-                }
-                i = i + 1;
-        }
-        return (NULL);
+		if (strcmp(str,  name) == 0)
+		{
+			str = strtok(NULL, "=");
+			return (str);
+		}
+		i = i + 1;
+	}
+	return (NULL);
 }
 
 /**
@@ -36,25 +36,25 @@ char *_getenv(const char *name)
 
 list_t *add_node(list_t **head, const char *str)
 {
-        list_t *ptr = malloc(sizeof(list_t));
-        unsigned int i;
+	list_t *ptr = malloc(sizeof(list_t));
+	unsigned int i;
 
-        if (ptr == NULL)
-        {
-                return (NULL);
-        }
-        i = 0;
-        while (str[i] != '\0')
-        {
-                i = i + 1;
-        }
-        ptr->str = strdup(str);
-        ptr->len = i;
-        ptr->next = NULL;
+	if (ptr == NULL)
+	{
+		return (NULL);
+	}
+	i = 0;
+	while (str[i] != '\0')
+	{
+		i = i + 1;
+	}
+	ptr->str = strdup(str);
+	ptr->len = i;
+	ptr->next = NULL;
 
-        ptr->next = *head;
-        *head = ptr;
-        return (*head);
+	ptr->next = *head;
+	*head = ptr;
+	return (*head);
 }
 
 /**
@@ -105,7 +105,7 @@ list_t *add_node_end(list_t **head, const char *str)
  * Return: pointer to the list
  */
 
-list_t * _path_to_list(char *command)
+list_t *_path_to_list(char *command)
 {
 	char *str;
 	list_t *node;
