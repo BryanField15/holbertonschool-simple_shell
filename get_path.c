@@ -14,7 +14,7 @@ char *_getenv(const char *name)
 
         i = 0;
         environ_ptr = environ;
-        printf("environ_ptr memory after init: %p\n", (void *)environ_ptr);
+        /*printf("environ_ptr memory after init: %p\n", (void *)environ_ptr);*/
         if (environ_ptr == NULL)
         {
                 return (NULL);
@@ -23,11 +23,11 @@ char *_getenv(const char *name)
         {
                 char *env_copy = strdup(environ_ptr[i]);
                 str = strtok(env_copy, "=");
-                printf("str after strdup: %p\n", str);
+		/*printf("str after strdup: %p\n", str);*/
                 if (strcmp(str,  name) == 0)
                 {
                         str = strtok(NULL, "=");
-                        printf("str after second strtok: %p\n", str);
+                        /*printf("str after second strtok: %p\n", str);*/
                         free(env_copy);
                         return (str);
                 }
