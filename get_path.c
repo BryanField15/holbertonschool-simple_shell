@@ -164,7 +164,7 @@ list_t *_path_to_list(char *command)
 		dir = strtok(NULL, ":");
 		/*free(full_path);*/
 	}
-	free(path);
+	free(full_path);
 	free(str);
 	return (node);
 }
