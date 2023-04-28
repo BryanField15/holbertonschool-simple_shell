@@ -26,6 +26,77 @@ char *_getenv(const char *name)
 }
 
 /**
+ * add_node - a function that adds a new node at the beginning
+ * of a list_t list
+ * @head: input parameter of a pointer to the beginning of a linked list
+ * @str: input string that too be added at the beginning
+ * Return: the address of the new element or NULL if it faild
+ */
+list_t *add_node(list_t **head, const char *str)
+{
+        list_t *ptr = malloc(sizeof(list_t));
+        unsigned int i;
+
+        if (ptr == NULL)
+        {
+                return (NULL);
+        }
+        i = 0;
+        while (str[i] != '\0')
+        {
+                i = i + 1;
+        }
+        ptr->str = strdup(str);
+        ptr->len = i;
+        ptr->next = NULL;
+
+        ptr->next = *head;
+        *head = ptr;
+        return (*head);
+}
+
+/**
+ * add_node_end - a function that adds a new node at the end
+ * of a list_t list
+ * @head: input parameter of a pointer to the beginning of a linked list
+ * @str: input string that too be added at the end
+ * Return: the address of the new element or NULL if it faild
+ */
+list_t *add_node_end(list_t **head, const char *str)
+{
+    list_t *temp = malloc(sizeof(list_t));
+    list_t *ptr;
+    unsigned int i;
+
+    if (temp == NULL)
+    {
+        return (NULL);
+    }
+    i = 0;
+    while (str[i] != '\0')
+    {
+        i = i + 1;
+    }
+    temp->str = strdup(str);
+    temp->len = i;
+    temp->next = NULL;
+    if (*head == NULL)
+    {
+        *head = temp;
+    }
+    else
+    {
+        ptr = *head;
+        while (ptr->next != NULL)
+        {
+            ptr = ptr->next;
+        }
+        ptr->next = temp;
+    }
+	return (temp);
+}
+
+/**
  * _path_to_list - a function that builds a linked list of the PATH directories
  *
  * Return: pointer to the list
@@ -78,7 +149,7 @@ void free_list(list_t *head)
  * @head: input parameter of a pointer to the beginning of a linked list
  * @str: input string that too be added at the beginning
  * Return: the address of the new element or NULL if it faild
- */
+ *
 list_t *add_node(list_t **head, const char *str)
 {
 	list_t *ptr = malloc(sizeof(list_t));
@@ -101,14 +172,14 @@ list_t *add_node(list_t **head, const char *str)
 	*head = ptr;
 	return (*head);
 }
-
+*/
 /**
  * add_node_end - a function that adds a new node at the end
  * of a list_t list
  * @head: input parameter of a pointer to the beginning of a linked list
  * @str: input string that too be added at the end
  * Return: the address of the new element or NULL if it faild
- */
+ *
 list_t *add_node_end(list_t **head, const char *str)
 {
     list_t *temp = malloc(sizeof(list_t));
@@ -140,14 +211,14 @@ list_t *add_node_end(list_t **head, const char *str)
         }
         ptr->next = temp;
     }
-    return (temp);
+   l return (temp);
 }
-
+*/
 /**
  * print_list - a function that prints all the elements of a list_t list
  * @h: input parameter of a pointer to a list
  * Return: the number of nodes in the list
- */
+ *
 size_t print_list(const list_t *h)
 {
 	size_t count;
@@ -168,6 +239,7 @@ size_t print_list(const list_t *h)
 	}
 	return (count);
 }
+*/
 /**
  *get_path - handles the path variable and only forks if it is found
  *@command:
@@ -184,7 +256,8 @@ char *get_path(char *command)
 
 	head = _path_to_list(command);
 	add_node(&head, command);
-	print_list(head);
+/*	print_list(head);
+ */
 	tmp = head;
 	while (tmp != NULL)
 	{

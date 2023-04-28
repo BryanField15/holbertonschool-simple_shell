@@ -11,6 +11,7 @@ int check_builtin_cmd(char **token_array)
 	func_t builtins_cmd[] = {
 		{"env", print_env},
 		{"exit", leave_shell},
+		{"cd", change_wd},
 		{NULL, NULL}
 	};
 

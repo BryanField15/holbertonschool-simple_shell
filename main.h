@@ -56,6 +56,6 @@ char *get_path(char *command);
 int check_builtin_cmd(char **token_array);
 int print_env(char **token_array);
 int leave_shell(char **token_array);
-
+int change_wd(char **token_array);
 
 #endif
