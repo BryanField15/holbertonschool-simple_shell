@@ -15,6 +15,7 @@ int main(void)
 	{
 		init_shell();
 		input = read_line();
+		printf("after read_line, the address of input is: %p\n", input);
 		if (input == NULL)
 		{
 			return (0);
@@ -26,6 +27,7 @@ int main(void)
 			run_command(token_array);
 		}
 		free(token_array);
+		printf("after run_command, the address of input is: %p\n", input);
 		free(input);
 		fflush(stdin);
 	}

@@ -14,9 +14,10 @@ char *read_line()
 	line = NULL;
 	length = 0;
 	is_read = getline(&line, &length, stdin);
-
+	printf("after getline LINE= the address %p\n", line);
 	if (is_read == EOF)
 	{
+		printf("if EOF LINE= the address %p\n", line);
 		free(line);
 		return (NULL);
 	}

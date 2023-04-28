@@ -26,5 +26,6 @@ char *trim_line(char *line)
 	}
 
 	end[1] = '\0';
+	printf("the address of lINE after trim_line is: %p\n", line);
 	return (line);
 }
