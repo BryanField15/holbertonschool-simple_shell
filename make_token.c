@@ -21,7 +21,7 @@ char **make_token(char *trimmed, char *delim)
 	{
 		return (NULL);
 	}
-
+	printf("Allocated memory after trimmed dupped: %p (token_str)\n", token_str);
 	token = strtok(token_str, delim);
 	while (token != NULL)
 	{
@@ -32,6 +32,7 @@ char **make_token(char *trimmed, char *delim)
 	token_array = malloc(sizeof(*token_array) * (i + 1));
 	if (token_array == NULL)
 	{
+		printf("Freeing memory if malloc fails: %p (token_str)\n", token_str);
 		free(token_str);
 		return (NULL);
 	}
@@ -44,6 +45,7 @@ char **make_token(char *trimmed, char *delim)
 		i = i + 1;
 	}
 	token_array[i] = NULL;
+	printf("Freeing memory after making token: %p (token_str)\n", token_str);
 	free(token_str);
 	return (token_array);
 }

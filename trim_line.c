@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * trim_line - get rid off the leading and trailing spaces
  * @line: pointer to line to be trimmed
@@ -8,6 +9,14 @@
 char *trim_line(char *line)
 {
 	char *end;
+	size_t len;
+
+	len = strlen(line);
+
+	if (len > 0 && line[len - 1] =='\n')
+	{
+		line[len - 1] = '\0';
+	}
 
 	while (isspace(*line) != 0)
 	{
