@@ -47,7 +47,8 @@ char **make_token(char *trimmed, char *delim);
 list_t *add_node_end(list_t **head, const char *str);
 list_t *add_node(list_t **head, const char *str);
 
-int _execve(char **token_array);
+/*int _execve(char **token_array);
+ */
 int run_command(char **token_array);
 
 char *get_path(char *command);

@@ -23,6 +23,7 @@ int run_command(char **token_array)
 	if (path == NULL)
 	{
 		fprintf(stderr, "%s: command not found\n", token_array[0]);
+		free(path);
 		return (1);
 	}
 
@@ -30,8 +31,8 @@ int run_command(char **token_array)
 	if (child == -1)
 	{
 	/*	perror("fork");
+	 */
 		free(path);
-	*/
 		free(token_array);
 		return (1);
 	}
