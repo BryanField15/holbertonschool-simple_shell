@@ -12,11 +12,11 @@ char *trim_line(char *line)
 	while (isspace(*line) != 0)
 	{
 		line = line + 1;
-	}
 
-	if (*line == '\0')
-	{
-		return (line);
+		if (*line == '\0')
+		{
+			return (line);
+		}
 	}
 
 	end = line + strlen(line) - 1;
