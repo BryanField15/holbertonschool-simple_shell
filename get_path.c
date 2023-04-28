@@ -8,14 +8,19 @@
 
 char *_getenv(const char *name)
 {
-	extern char **environ;
+	const char **environ_ptr;
 	char *str;
 	int i;
 
 	i = 0;
-	while (environ[i] != NULL)
+	environ_ptr = environ;
+	if (environ_ptr == NULL)
 	{
-		str = strtok(strdup(environ[i]), "=");
+		return (NULL);
+	}
+	while (environ_ptr[i] != NULL)
+	{
+		str = strtok(strdup(environ_ptr[i]), "=");
 		if (strcmp(str,  name) == 0)
 		{
 			str = strtok(NULL, "=");
