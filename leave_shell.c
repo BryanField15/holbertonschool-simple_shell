@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * leave_shell - builtin exit
  * @token_array: unused parameter

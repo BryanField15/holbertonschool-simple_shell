@@ -1,5 +1,11 @@
 #include "main.h"
 
+/**
+ *count_array_size - counts number of tokens
+ *@token_array: array of user commands
+ *Return: count, the number of tokens
+ */
+
 int count_array_size(char **token_array)
 {
 	int count;
@@ -14,15 +20,16 @@ int count_array_size(char **token_array)
 
 /**
  * change_wd - a builtint function that changes the working dir
- * @
+ * @token_arrray: array of user commands
  * Return: 0 on success
  */
+
 int change_wd(char **token_array)
 {
 	int result;
 	int array_size;
 	const char *path;
-	
+
 	array_size = count_array_size(token_array);
 	if (array_size > 2)
         {

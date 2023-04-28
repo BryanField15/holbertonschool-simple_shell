@@ -1,9 +1,11 @@
 # include "main.h"
+
 /**
- * check_builtin_cmd - find matching builtin and execute
- *
- * Return: 0 on success and 1 if no matching builtin found
+ *check_builtin_cmd - find matching builtin and execute
+ *@token_array: array of user commands
+ *Return: 0 on success and 1 if no matching builtin found
  */
+
 int check_builtin_cmd(char **token_array)
 {
 	int i;
@@ -15,11 +17,6 @@ int check_builtin_cmd(char **token_array)
 		{NULL, NULL}
 	};
 
-/*	if (token_array == NULL)
-	{
-		return (-1);
-	}
-	*/
 	i = 0;
 	while (builtins_cmd[i].name != NULL)
 	{

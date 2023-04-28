@@ -16,6 +16,7 @@
  * @name: name
  * @func: functions
  */
+
 typedef struct builtin_func
 {
         char *name;
@@ -25,11 +26,10 @@ typedef struct builtin_func
 /**
  * struct list_s - singly linked list
  * @str: string - (malloc'ed string)
- * 
  * @next: points to the next node
- *
  * Description: singly linked list node structure
  */
+
 typedef struct list_s
 {
 	char *str;
@@ -47,13 +47,10 @@ char **make_token(char *trimmed, char *delim);
 list_t *add_node_end(list_t **head, const char *str);
 list_t *add_node(list_t **head, const char *str);
 
-/*int _execve(char **token_array);
- */
 int run_command(char **token_array);
 
 char *get_path(char *command);
 
-/* built_in */
 int check_builtin_cmd(char **token_array);
 int print_env(char **token_array);
 int leave_shell(char **token_array);

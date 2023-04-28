@@ -5,6 +5,7 @@
  * @name: pointer to the name of the env variable to be fetched
  * Return: NULL if not found; pointer to the corresponding value string
  */
+
 char *_getenv(const char *name)
 {
         extern char **environ;
@@ -32,6 +33,7 @@ char *_getenv(const char *name)
  * @str: input string that too be added at the beginning
  * Return: the address of the new element or NULL if it faild
  */
+
 list_t *add_node(list_t **head, const char *str)
 {
         list_t *ptr = malloc(sizeof(list_t));
@@ -62,43 +64,44 @@ list_t *add_node(list_t **head, const char *str)
  * @str: input string that too be added at the end
  * Return: the address of the new element or NULL if it faild
  */
+
 list_t *add_node_end(list_t **head, const char *str)
 {
-    list_t *temp = malloc(sizeof(list_t));
-    list_t *ptr;
-    unsigned int i;
+	list_t *temp = malloc(sizeof(list_t));
+	list_t *ptr;
+	unsigned int i;
 
-    if (temp == NULL)
-    {
-        return (NULL);
-    }
-    i = 0;
-    while (str[i] != '\0')
-    {
-        i = i + 1;
-    }
-    temp->str = strdup(str);
-    temp->len = i;
-    temp->next = NULL;
-    if (*head == NULL)
-    {
-        *head = temp;
-    }
-    else
-    {
-        ptr = *head;
-        while (ptr->next != NULL)
-        {
-            ptr = ptr->next;
-        }
-        ptr->next = temp;
-    }
+	if (temp == NULL)
+	{
+		return (NULL);
+	}
+	i = 0;
+	while (str[i] != '\0')
+	{
+		i = i + 1;
+	}
+	temp->str = strdup(str);
+	temp->len = i;
+	temp->next = NULL;
+	if (*head == NULL)
+	{
+		*head = temp;
+	}
+	else
+	{
+		ptr = *head;
+		while (ptr->next != NULL)
+		{
+			ptr = ptr->next;
+		}
+		ptr->next = temp;
+	}
 	return (temp);
 }
 
 /**
  * _path_to_list - a function that builds a linked list of the PATH directories
- *
+ * @command: command to be checked
  * Return: pointer to the list
  */
 
@@ -128,8 +131,10 @@ list_t * _path_to_list(char *command)
 
 /**
  * free_list - frees a linked list
+ * @head: head of linked list
  * Return: void
  */
+
 void free_list(list_t *head)
 {
 	list_t *tmp;
@@ -143,108 +148,11 @@ void free_list(list_t *head)
 	}
 }
 
-/**
- * add_node - a function that adds a new node at the beginning
- * of a list_t list
- * @head: input parameter of a pointer to the beginning of a linked list
- * @str: input string that too be added at the beginning
- * Return: the address of the new element or NULL if it faild
- *
-list_t *add_node(list_t **head, const char *str)
-{
-	list_t *ptr = malloc(sizeof(list_t));
-	unsigned int i;
 
-	if (ptr == NULL)
-	{
-		return (NULL);
-	}
-	i = 0;
-	while (str[i] != '\0')
-	{
-		i = i + 1;
-	}
-	ptr->str = strdup(str);
-	ptr->len = i;
-	ptr->next = NULL;
-
-	ptr->next = *head;
-	*head = ptr;
-	return (*head);
-}
-*/
-/**
- * add_node_end - a function that adds a new node at the end
- * of a list_t list
- * @head: input parameter of a pointer to the beginning of a linked list
- * @str: input string that too be added at the end
- * Return: the address of the new element or NULL if it faild
- *
-list_t *add_node_end(list_t **head, const char *str)
-{
-    list_t *temp = malloc(sizeof(list_t));
-    list_t *ptr;
-    unsigned int i;
-
-    if (temp == NULL)
-    {
-        return (NULL);
-    }
-    i = 0;
-    while (str[i] != '\0')
-    {
-        i = i + 1;
-    }
-    temp->str = strdup(str);
-    temp->len = i;
-    temp->next = NULL;
-    if (*head == NULL)
-    {
-        *head = temp;
-    }
-    else
-    {
-        ptr = *head;
-        while (ptr->next != NULL)
-        {
-            ptr = ptr->next;
-        }
-        ptr->next = temp;
-    }
-   l return (temp);
-}
-*/
-/**
- * print_list - a function that prints all the elements of a list_t list
- * @h: input parameter of a pointer to a list
- * Return: the number of nodes in the list
- *
-size_t print_list(const list_t *h)
-{
-	size_t count;
-
-	count = 0;
-	while (h != NULL)
-	{
-		if (h->str == NULL)
-		{
-			printf("[0] (nil)\n");
-		}
-		else
-		{
-			printf("[%ld] %s\n", count, h->str);
-		}
-		h = h->next;
-		count = count + 1;
-	}
-	return (count);
-}
-*/
 /**
  *get_path - handles the path variable and only forks if it is found
- *@command:
- *
- *Return: NULL
+ *@command: user command
+ *Return: path required to execute
  */
 
 char *get_path(char *command)
@@ -256,8 +164,6 @@ char *get_path(char *command)
 
 	head = _path_to_list(command);
 	add_node(&head, command);
-/*	print_list(head);
- */
 	tmp = head;
 	while (tmp != NULL)
 	{
@@ -265,7 +171,7 @@ char *get_path(char *command)
 		{
 			path = strdup(tmp->str);
 			free_list(head);
-			return (path);	
+			return (path);
 		}
 		tmp = tmp->next;
 	}
