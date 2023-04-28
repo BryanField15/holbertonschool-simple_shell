@@ -8,23 +8,61 @@
 
 char *_getenv(const char *name)
 {
-	extern char **environ;
+        char **environ_ptr;
+        char *str;
+        int i;
+
+        i = 0;
+        environ_ptr = environ;
+        /*printf("environ_ptr memory after init: %p\n", (void *)environ_ptr);*/
+        if (environ_ptr == NULL)
+        {
+                return (NULL);
+        }
+        while (environ_ptr[i] != NULL)
+        {
+                char *env_copy = strdup(environ_ptr[i]);
+                str = strtok(env_copy, "=");
+		/*printf("str after strdup: %p\n", str);*/
+                if (strcmp(str,  name) == 0)
+                {
+                        str = strtok(NULL, "=");
+                        /*printf("str after second strtok: %p\n", str);*/
+                        free(env_copy);
+                        return (str);
+                }
+                free(env_copy);
+                i = i + 1;
+        }
+        return (NULL);
+}
+/*char *_getenv(const char *name)
+{
+	char **environ_ptr;
 	char *str;
 	int i;
 
 	i = 0;
-	while (environ[i] != NULL)
+	environ_ptr = environ;
+	printf("environ_ptr memory after init: %p\n", (void *)environ_ptr);
+	if (environ_ptr == NULL)
 	{
-		str = strtok(strdup(environ[i]), "=");
+		return (NULL);
+	}
+	while (environ_ptr[i] != NULL)
+	{
+		str = strtok(strdup(environ_ptr[i]), "=");
+		printf("str after strdup: %p\n", str);
 		if (strcmp(str,  name) == 0)
 		{
 			str = strtok(NULL, "=");
+			printf("str after second strtok: %p\n", str);
 			return (str);
 		}
 		i = i + 1;
 	}
 	return (NULL);
-}
+	}*/
 
 /**
  * add_node - a function that adds a new node at the beginning
@@ -124,8 +162,10 @@ list_t *_path_to_list(char *command)
 		strcat(full_path, command);
 		add_node_end(&node, full_path);
 		dir = strtok(NULL, ":");
-		free(full_path);
+		/*free(full_path);*/
 	}
+	free(full_path);
+	free(str);
 	return (node);
 }
 

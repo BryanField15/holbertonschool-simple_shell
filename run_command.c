@@ -21,7 +21,7 @@ int run_command(char **token_array)
 	if (path == NULL)
 	{
 		fprintf(stderr, "%s: command not found\n", token_array[0]);
-		free(path);
+		/*free(path);*/
 		return (1);
 	}
 
@@ -29,7 +29,7 @@ int run_command(char **token_array)
 	if (child == -1)
 	{
 		free(path);
-		free(token_array);
+		/*free(token_array);*/
 		return (1);
 	}
 	else if (child == 0)
@@ -38,7 +38,7 @@ int run_command(char **token_array)
 		if (execve(path, token_array, environ) == -1)
 		{
 			perror("execve");
-			free(path);
+			/*free(path);*/
 			exit(EXIT_FAILURE);
 		}
 		return (0);
@@ -51,6 +51,7 @@ int run_command(char **token_array)
 			/*free(path);
 			return (1);*/
 		}
+		free(path);
 	}
 	/*free(token_array);*/
 	return (0);

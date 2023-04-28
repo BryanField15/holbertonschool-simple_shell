@@ -21,5 +21,6 @@ char *read_line()
 		free(line);
 		return (NULL);
 	}
+
 	return (line);
 }
