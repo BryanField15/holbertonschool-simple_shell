@@ -1,4 +1,17 @@
-# include "main.h"
+#include "main.h"
+
+int count_array_size(char **token_array)
+{
+	int count;
+
+	count = 0;
+	while (token_array[count] != NULL)
+	{
+		count = count + 1;
+	}
+	return (count);
+}
+
 /**
  * change_wd - a builtint function that changes the working dir
  * @
@@ -7,25 +20,27 @@
 int change_wd(char **token_array)
 {
 	int result;
+	int array_size;
 	const char *path;
 	
-	if (strcmp(token_array[0], "cd") == 0 && token_array[1] == NULL)
+	array_size = count_array_size(token_array);
+	if (array_size > 2)
+        {
+                perror("cd");
+                return (1);
+        }
+	if (array_size == 1)
 	{
 		chdir(getenv("HOME"));
+		return (1);
 	}
-	else if (token_array[2] == NULL)
+
+	path = token_array[1];
+	printf("we are in the builtin cd and get path\n");
+	result = chdir(path);
+	if (result != 0)
 	{
-		path = token_array[1];
-		printf("we are in the builtin cd and get path\n");
-		result = chdir(path);
-		if (result != 0)
-		{
-			perror("cd");
-			return (1);
-		}
-	}
-	else
-	{
+		perror("cd");
 		return (1);
 	}
 	return (0);
