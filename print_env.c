@@ -5,7 +5,7 @@
  *Return: 0
  */
 
-int print_env(__attribute__((unused)) char **environ)
+int print_env(__attribute__((unused)) char **token_array)
 {
 	int i;
 
@@ -13,7 +13,6 @@ int print_env(__attribute__((unused)) char **environ)
 	i = 0;
 	while (environ[i] != NULL)
 	{
-		printf("In print_env While() \n");
 		printf("%s\n", environ[i]);
 		i = i + 1;
 	}
