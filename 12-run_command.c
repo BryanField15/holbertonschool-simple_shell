@@ -18,13 +18,11 @@ int run_command(char **token_array)
 		i = i + 1;
 	}
 	if (token_array[0] == NULL)
-	{
 		return (0);
-	}
 	path = get_path(token_array[0]);
 	if (path == NULL)
 	{
-		fprintf(stderr, "%s: command not found\n", token_array[0]);
+		fprintf(stderr, "%s: not found\n", token_array[0]);
 		return (1);
 	}
 	child = fork();
@@ -45,9 +43,7 @@ int run_command(char **token_array)
 	else
 	{
 		if (wait(&status) == -1)
-		{
 			perror("wait");
-		}
 		free(path);
 	}
 	return (0);

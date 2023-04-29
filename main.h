@@ -14,18 +14,19 @@
 /**
  * struct builtin_func - structure of built-in functions
  * @name: name
- * @func: functions
+ * @f: builtin function
  */
 
 typedef struct builtin_func
 {
-        char *name;
-        int (*f)(char **token_array);
+	char *name;
+	int (*f)(char **token_array);
 } func_t;
 
 /**
  * struct list_s - singly linked list
  * @str: string - (malloc'ed string)
+ * @len: length
  * @next: points to the next node
  * Description: singly linked list node structure
  */
@@ -50,7 +51,6 @@ list_t *add_node(list_t **head, const char *str);
 list_t *add_node_end(list_t **head, const char *str);
 void free_list(list_t *head);
 list_t *_path_to_list(char *command);
-size_t print_list(const list_t *h);
 
 char *get_path(char *command);
 
