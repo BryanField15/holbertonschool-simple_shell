@@ -38,26 +38,21 @@
 	}*/
 char *_getenv(const char *name)
 {
-	char **environ_ptr;
-	char *str;
 	int i;
 
 	i = 0;
-	environ_ptr = environ;
-	printf("environ_ptr memory after init: %p\n", (void *)environ_ptr);
-	if (environ_ptr == NULL)
+//	printf("environ_ptr memory after init: %p\n", (void *)environ_ptr);
+	if (environ == NULL)
 	{
 		return (NULL);
 	}
-	while (environ_ptr[i] != NULL)
+	while (environ[i] != NULL)
 	{
-		str = strtok(strdup(environ_ptr[i]), "=");
-		printf("str after strdup: %p\n", str);
-		if (strcmp(str,  name) == 0)
+//		printf("str after strdup: %p\n", str);
+		if (strncmp(environ[i], name, strlen(name)) == 0)
 		{
-			str = strtok(NULL, "=");
-			printf("str after second strtok: %p\n", str);
-			return (str);
+//			printf("str after second strtok: %p\n", str);
+			return (strdup(&environ[i][strlen(name) + 1]));
 		}
 		i = i + 1;
 	}
@@ -119,7 +114,7 @@ list_t *_path_to_list(char *command)
 	char *dir;
 	char *full_path;
 
-	str = getenv("PATH");
+	str = _getenv("PATH");
 	dir = strtok(str, ":");
 	node = NULL;
 	while (dir != NULL)
@@ -131,9 +126,9 @@ list_t *_path_to_list(char *command)
 		strcat(full_path, command);
 		add_node_end(&node, full_path);
 		dir = strtok(NULL, ":");
-		/*free(full_path);*/
+		free(full_path);
 	}
-	free(full_path);
-	/*free(str);*/
+	free(str);
+//	print_list(node);
 	return (node);
 }

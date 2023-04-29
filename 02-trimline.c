@@ -8,33 +8,28 @@
 
 char *trim_line(char *line)
 {
+	char *start;
 	char *end;
 	size_t len;
 
 	len = strlen(line);
-
-	if (len > 0 && line[len - 1] =='\n')
+	start = line;
+	end =  &line[len - 1];
+	if (len == 1)
 	{
-		line[len - 1] = '\0';
+		return (strdup(""));
+	}
+	while (isspace(*start) != 0)
+	{
+		start = start + 1;
 	}
 
-	while (isspace(*line) != 0)
-	{
-		line = line + 1;
-
-		if (*line == '\0')
-		{
-			return (line);
-		}
-	}
-
-	end = line + strlen(line) - 1;
-	while (end > line && (isspace(*end) != 0))
+	while (end > start && (isspace(*end) != 0))
 	{
 		end = end - 1;
 	}
 
 	end[1] = '\0';
-	printf("the address of lINE after trim_line is: %p (line)\n", line);
-	return (line);
+//	printf("the address of lINE after trim_line is: %p (line)\n", line);
+	return (strdup(start));
 }

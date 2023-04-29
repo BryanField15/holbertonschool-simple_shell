@@ -11,13 +11,21 @@ int run_command(char **token_array)
 	pid_t child;
 	int status;
 	char *path;
+	int i;
 
+	i = 0;
+	while (token_array[i] != NULL)
+	{
+		printf("token_array[%d]: %s\n", i, token_array[i]);
+		i = i + 1;
+	}
 	if (token_array[0] == NULL)
 	{
 		return (0);
 	}
 
 	path = get_path(token_array[0]);
+	printf("the path from get_path is: %s\n", path);
 	if (path == NULL)
 	{
 		fprintf(stderr, "%s: command not found\n", token_array[0]);
