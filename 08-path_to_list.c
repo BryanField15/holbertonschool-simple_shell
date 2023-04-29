@@ -6,7 +6,7 @@
  * Return: NULL if not found; pointer to the corresponding value string
  */
 
-char *_getenv(const char *name)
+/*char *_getenv(const char *name)
 {
         char **environ_ptr;
         char *str;
@@ -14,7 +14,7 @@ char *_getenv(const char *name)
 
         i = 0;
         environ_ptr = environ;
-        /*printf("environ_ptr memory after init: %p\n", (void *)environ_ptr);*/
+        printf("environ_ptr memory after init: %p\n", (void *)environ_ptr);
         if (environ_ptr == NULL)
         {
                 return (NULL);
@@ -23,11 +23,11 @@ char *_getenv(const char *name)
         {
                 char *env_copy = strdup(environ_ptr[i]);
                 str = strtok(env_copy, "=");
-		/*printf("str after strdup: %p\n", str);*/
+		printf("str after strdup: %p\n", str);
                 if (strcmp(str,  name) == 0)
                 {
                         str = strtok(NULL, "=");
-                        /*printf("str after second strtok: %p\n", str);*/
+                        printf("str after second strtok: %p\n", str);
                         free(env_copy);
                         return (str);
                 }
@@ -35,8 +35,8 @@ char *_getenv(const char *name)
                 i = i + 1;
         }
         return (NULL);
-}
-/*char *_getenv(const char *name)
+	}*/
+char *_getenv(const char *name)
 {
 	char **environ_ptr;
 	char *str;
@@ -63,7 +63,7 @@ char *_getenv(const char *name)
 	}
 	return (NULL);
 }
-*/	
+
 /**
  * add_node_end - a function that adds a new node at the end
  * of a list_t list
@@ -119,7 +119,7 @@ list_t *_path_to_list(char *command)
 	char *dir;
 	char *full_path;
 
-	str = _getenv("PATH");
+	str = getenv("PATH");
 	dir = strtok(str, ":");
 	node = NULL;
 	while (dir != NULL)
@@ -134,6 +134,6 @@ list_t *_path_to_list(char *command)
 		/*free(full_path);*/
 	}
 	free(full_path);
-	free(str);
+	/*free(str);*/
 	return (node);
 }
