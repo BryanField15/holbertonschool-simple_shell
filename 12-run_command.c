@@ -23,7 +23,7 @@ int run_command(char **token_array)
 	if (path == NULL)
 	{
 		fprintf(stderr, "./hsh: 1: %s: not found\n", token_array[0]);
-		return (127);
+		return (1);
 	}
 	child = fork();
 	if (child == -1)
@@ -36,7 +36,7 @@ int run_command(char **token_array)
 		if (execve(path, token_array, environ) == -1)
 		{
 			perror("execve");
-			exit(EXIT_FAILURE);
+			exit(127);
 		}
 		return (0);
 	}
