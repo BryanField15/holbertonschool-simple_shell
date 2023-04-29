@@ -6,52 +6,20 @@
  * Return: NULL if not found; pointer to the corresponding value string
  */
 
-/*char *_getenv(const char *name)
-{
-        char **environ_ptr;
-        char *str;
-        int i;
-
-        i = 0;
-        environ_ptr = environ;
-        printf("environ_ptr memory after init: %p\n", (void *)environ_ptr);
-        if (environ_ptr == NULL)
-        {
-                return (NULL);
-        }
-        while (environ_ptr[i] != NULL)
-        {
-                char *env_copy = strdup(environ_ptr[i]);
-                str = strtok(env_copy, "=");
-		printf("str after strdup: %p\n", str);
-                if (strcmp(str,  name) == 0)
-                {
-                        str = strtok(NULL, "=");
-                        printf("str after second strtok: %p\n", str);
-                        free(env_copy);
-                        return (str);
-                }
-                free(env_copy);
-                i = i + 1;
-        }
-        return (NULL);
-	}*/
 char *_getenv(const char *name)
 {
 	int i;
 
 	i = 0;
-//	printf("environ_ptr memory after init: %p\n", (void *)environ_ptr);
+
 	if (environ == NULL)
 	{
 		return (NULL);
 	}
 	while (environ[i] != NULL)
 	{
-//		printf("str after strdup: %p\n", str);
 		if (strncmp(environ[i], name, strlen(name)) == 0)
 		{
-//			printf("str after second strtok: %p\n", str);
 			return (strdup(&environ[i][strlen(name) + 1]));
 		}
 		i = i + 1;
@@ -129,6 +97,5 @@ list_t *_path_to_list(char *command)
 		free(full_path);
 	}
 	free(str);
-//	print_list(node);
 	return (node);
 }

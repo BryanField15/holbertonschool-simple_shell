@@ -18,12 +18,12 @@ int check_builtin_cmd(char **token_array)
 	};
 
 	i = 0;
-//	printf("address of token passed to check builtin is %p (*token_array)\n", *token_array);
+
 	while (builtins_cmd[i].name != NULL)
 	{
 		if (strcmp(builtins_cmd[i].name, token_array[0]) == 0)
 		{
-			return(builtins_cmd[i].f(token_array));
+			return (builtins_cmd[i].f(token_array));
 		}
 		i = i + 1;
 	}

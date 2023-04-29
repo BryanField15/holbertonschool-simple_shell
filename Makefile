@@ -6,9 +6,13 @@ SRC0 = *.c
 OBJ0 = $(SRC0:.c=.o)
 NAME0 = hsh
 
-all: $(OBJ0)
-	$(SRC0)
+all: $(NAME0)
+
+$(NAME0): $(OBJ0)
 	$(CC) $(CFLAGS) $(OBJ0) -o $(NAME0)
+
+$(OBJ0): $(SRC0)
+	$(CC) $(CFLAGS) -c $(SRC0)
 
 test:
 	$(CC) $(SRC0) -o $(NAME0)

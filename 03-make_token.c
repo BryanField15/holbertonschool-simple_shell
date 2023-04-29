@@ -1,4 +1,11 @@
 #include "main.h"
+
+/**
+ * list_to_array - converts a linked list to an array
+ * @head: pointer to head of list
+ * Return: array
+ */
+
 char **list_to_array(list_t *head)
 {
 	size_t length;
@@ -7,8 +14,7 @@ char **list_to_array(list_t *head)
 
 	length = list_len(head);
 	array = malloc(sizeof(*array) * (length + 1));
-	/*check malloc
-	 * */
+
 	index = 0;
 	while (head != NULL)
 	{
@@ -41,7 +47,7 @@ char **make_token(char *trimmed, char *delim)
 	{
 		return (NULL);
 	}
-//	printf("Allocated memory after trimmed dupped: %p (token_str)\n", token_str);
+
 	token = strtok(token_str, delim);
 	while (token != NULL)
 	{
@@ -53,25 +59,3 @@ char **make_token(char *trimmed, char *delim)
 	free(token_str);
 	return (token_array);
 }
-
-/*	token_array = malloc(sizeof(*token_array) * (i + 1));
-	if (token_array == NULL)
-	{
-		printf("Freeing memory if malloc fails: %p (token_str)\n", token_str);
-		free(token_str);
-		return (NULL);
-	}
-	i = 0;
-	token = strtok(trimmed, delim);
-	while (token != NULL)
-	{
-		token_array[i] = token;
-		token = strtok(NULL, delim);
-		i = i + 1;
-	}
-	token_array[i] = NULL;
-	printf("Freeing memory after making token: %p (token_str)\n", token_str);
-	free(token_str);
-	return (token_array);
-}
-*/
