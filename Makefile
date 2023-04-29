@@ -7,7 +7,7 @@ OBJ0 = $(SRC0:.c=.o)
 NAME0 = hsh
 
 all: $(OBJ0)
-	$(BETTY) $(SRC0)
+	$(SRC0)
 	$(CC) $(CFLAGS) $(OBJ0) -o $(NAME0)
 
 test:
