@@ -22,8 +22,8 @@ int run_command(char **token_array)
 	path = get_path(token_array[0]);
 	if (path == NULL)
 	{
-		fprintf(stderr, "%s: not found\n", token_array[0]);
-		return (1);
+		fprintf(stderr, "./hsh: 1: %s: not found\n", token_array[0]);
+		return (127);
 	}
 	child = fork();
 	if (child == -1)
