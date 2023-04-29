@@ -45,9 +45,12 @@ char *trim_line(char *line);
 char **make_token(char *trimmed, char *delim);
 
 /* make linked list for path */
+size_t list_len(const list_t *h);
 list_t *add_node(list_t **head, const char *str);
+list_t *add_node_end(list_t **head, const char *str);
 void free_list(list_t *head);
 list_t *_path_to_list(char *command);
+size_t print_list(const list_t *h);
 
 char *get_path(char *command);
 
