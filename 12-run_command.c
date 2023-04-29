@@ -36,7 +36,7 @@ int run_command(char **token_array)
 		if (execve(path, token_array, environ) == -1)
 		{
 			perror("execve");
-			exit(127);
+			exit(EXIT_FAILURE);
 		}
 		return (0);
 	}
