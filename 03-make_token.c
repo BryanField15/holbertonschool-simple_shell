@@ -22,7 +22,7 @@ char **list_to_array(list_t *head)
 		index = index + 1;
 		head = head->next;
 	}
-	array[index] == NULL;
+	array[index] = NULL;
 	return (array);
 }
 

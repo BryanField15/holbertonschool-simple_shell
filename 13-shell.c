@@ -50,7 +50,7 @@ int main(void)
 		free(input);
 		free(trimmed);
 		fflush(stdin);
-		if (return_from_builtin == 42)
+		if (ret_from_builtin == 42)
 		{
 			break;
 		}
