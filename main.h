@@ -52,6 +52,7 @@ list_t *add_node_end(list_t **head, const char *str);
 void free_list(list_t *head);
 list_t *_path_to_list(char *command);
 
+char *_getenv(const char *name);
 char *get_path(char *command);
 
 int run_command(char **token_array);

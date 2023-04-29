@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * count_array_size - counts number of tokens
  * @token_array: array of user commands
@@ -38,7 +37,7 @@ int change_wd(char **token_array)
 	}
 	if (array_size == 1)
 	{
-		chdir(getenv("HOME"));
+		chdir(_getenv("HOME"));
 		return (1);
 	}
 
