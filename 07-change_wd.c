@@ -38,7 +38,7 @@ int change_wd(char **token_array)
 	if (array_size == 1)
 	{
 		chdir(_getenv("HOME"));
-		return (1);
+		return (0);
 	}
 
 	path = token_array[1];
